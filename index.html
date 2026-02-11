@@ -3,25 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>PTWaffles - Mountain Portfolio</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(180deg, #87ceeb 0%, #e0f6ff 100%);
+            z-index: 1;
+        }
+
+        .clouds {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 100px;
+            opacity: 0.7;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 100px;
+        }
+
+        .cloud1 {
+            width: 150px;
+            height: 40px;
+            left: 10%;
+            top: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cloud2 {
+            width: 200px;
+            height: 50px;
+            right: 5%;
+            top: 25%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .cloud3 {
+            width: 120px;
+            height: 35px;
+            left: 50%;
+            top: 35%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(30px); }
+        }
+
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            z-index: 3;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .mountain1 {
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 300px solid #2c5f2d;
+        }
+
+        .mountain2 {
+            left: 250px;
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 400px solid #1e4620;
+        }
+
+        .mountain3 {
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 180px solid transparent;
+            border-right: 180px solid transparent;
+            border-bottom: 350px solid #2c5f2d;
+        }
+
+        .snow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid white;
+            opacity: 0.9;
+        }
+
+        .snow1 {
+            top: 0;
+            left: 250px;
+        }
+
+        .snow2 {
+            top: 20px;
+            right: 200px;
+        }
+
+        .snow3 {
+            top: 30px;
+            left: 400px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 4;
             text-align: center;
-            padding: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            animation: slideUp 0.8s ease-out;
         }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         h1 {
-            color: #4682b4;
+            font-size: 48px;
+            color: #2c5f2d;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
-        p {
-            font-size: 18px;
-            color: #555;
+
+        .bio {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .contact {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .contact-item {
+            display: inline-block;
+            margin: 10px 15px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 500;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my simple website with a cool design!</p>
+    <div class="sky"></div>
+    
+    <div class="clouds">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+    </div>
+
+    <div class="mountains">
+        <div class="mountain mountain1"></div>
+        <div class="mountain mountain2">
+            <div class="snow snow1"></div>
+        </div>
+        <div class="mountain mountain3">
+            <div class="snow snow2"></div>
+        </div>
+        <div class="snow snow3"></div>
+    </div>
+
+    <div class="content">
+        <h1>Hello! I'm PTWaffles.</h1>
+        
+        <div class="bio">
+            <p>I'm A Person Who Loves To Work On My Own Projects And Fun Things. If You Want To Contact Me You Can Find Me On Discord <strong>(chr5987)</strong> Or Email Me!</p>
+        </div>
+
+        <div class="contact">
+            <div class="contact-text">Get in touch:</div>
+            <a href="mailto:ptwaffles@ptwaffles.org" class="contact-item">📧 Email</a>
+            <a href="https://discord.com" class="contact-item">💬 Discord (chr5987)</a>
+        </div>
+    </div>
 </body>
 </html>
