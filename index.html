@@ -253,7 +253,8 @@
         <h1>Hello! I'm PTWaffles.</h1>
         
         <div class="bio">
-            <p>I'm A Person Who Loves To Work On My Own Projects And Fun Things. If You Want To Contact Me You Can Find Me On Discord <strong>(chr5987)</strong> Or Email Me!</p>
+            <!-- Added a unique id selector here to modify this text content area dynamically -->
+            <p id="api-text-display">Loading biography details...</p>
         </div>
 
         <div class="contact">
@@ -262,5 +263,31 @@
             <a href="https://discord.gg/cUk6QpbmwC" class="contact-item">💬 Discord (chr5987)</a>
         </div>
     </div>
+
+    <script>
+        async function fetchBioFromApi() {
+            const bioContainer = document.getElementById('api-text-display');
+            try {
+                // Fetch request pointing to your exact database instance string path
+                const response = await fetch('https://ptwaffles.org');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP Error Status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Targets the 'text' key value field mapping to "test api"
+                bioContainer.innerText = data.text;
+                
+            } catch (error) {
+                console.error("API call failure details:", error);
+                bioContainer.innerText = "Error loading bio information from server.";
+            }
+        }
+
+        // Fire request execution logic immediately once the elements load
+        document.addEventListener('DOMContentLoaded', fetchBioFromApi);
+    </script>
 </body>
 </html>
